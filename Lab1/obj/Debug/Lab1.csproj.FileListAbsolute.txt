@@ -1,0 +1,9 @@
+D:\Мага\ТОВ\Lab1\Lab1\bin\Debug\Lab1.exe.config
+D:\Мага\ТОВ\Lab1\Lab1\bin\Debug\Lab1.exe
+D:\Мага\ТОВ\Lab1\Lab1\bin\Debug\Lab1.pdb
+D:\Мага\ТОВ\Lab1\Lab1\obj\Debug\Lab1.csprojResolveAssemblyReference.cache
+D:\Мага\ТОВ\Lab1\Lab1\obj\Debug\Lab1.exe
+D:\Мага\ТОВ\Lab1\Lab1\obj\Debug\Lab1.pdb
+D:\Мага\ТОВ\Lab1\Lab1\bin\Debug\System.Data.SQLite.dll
+D:\Мага\ТОВ\Lab1\Lab1\bin\Debug\System.Data.SQLite.pdb
+D:\Мага\ТОВ\Lab1\Lab1\bin\Debug\System.Data.SQLite.xml
